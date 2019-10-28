@@ -11,7 +11,6 @@ import ua.vyz.service.DefaultVyzService;
 @Controller
 @RequiredArgsConstructor
 public class VyzController {
-
     private final DefaultVyzService vyzService;
 
     @GetMapping("/main")
@@ -32,11 +31,22 @@ public class VyzController {
         return "main";
     }
 
+    @GetMapping("/facultetTiltle")
+    public String getVyzsByFacultetTitle(@RequestParam String facultetTitle, Model model){
+        model.addAttribute("vyzs", vyzService.getVyzsByFacultetTitle(facultetTitle));
+        return "main";
+    }
+
     @GetMapping("/scoretown")
     public String getVyzByPassingScoreAndTown(@RequestParam int passingScore, @RequestParam String town, Model model){
         model.addAttribute("vyzs", vyzService.getVyzByPassingScoreAndTown(passingScore, town));
         return "main";
     }
 
+    @GetMapping("/titleScoreTown")
+    public String getVyzByAllParams(@RequestParam String facultetTitle, @RequestParam int passingScore, @RequestParam String town, Model model){
+        model.addAttribute("vyzs", vyzService.getVyzByAllParams(facultetTitle, passingScore, town));
+        return "main";
+    }
 
 }
