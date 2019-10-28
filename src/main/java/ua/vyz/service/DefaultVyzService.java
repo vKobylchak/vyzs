@@ -27,6 +27,7 @@ public class DefaultVyzService implements VyzService {
 
     @Override
     public List<Vyz> getVyzByPassingScore(int passingScore) {
+
         return vyzRepository.findByPassingScoreLessThanEqual(passingScore);
     }
 
@@ -45,4 +46,6 @@ public class DefaultVyzService implements VyzService {
     public List<Vyz> getVyzByAllParams(String facultetTitle, int passingScore, String town) {
         return vyzRepository.findVyzsByFacultetTitleAndPassingScoreAndTown(facultetTitle, passingScore, town);
     }
+
+
 }

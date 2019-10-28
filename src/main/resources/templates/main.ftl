@@ -7,6 +7,17 @@
     <div>
         <@l.logout />
     </div>
+
+
+    <#if wrongParam??>
+        Hi ${wrongParam}, How are you?
+    </#if>
+
+<#--    <#if wrongParam>-->
+<#--        <h1>WRONG PARAM</h1>-->
+<#--    </#if>-->
+
+
     <#list vyzs as vyz>
         <div>
             <b>${vyz.title}</b>
