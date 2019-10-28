@@ -11,4 +11,5 @@ public interface FacultetRepository extends JpaRepository<Facultet, Integer> {
     <S extends Facultet> S save(S s);
 
     Facultet findByTitle(String title);
+
 }

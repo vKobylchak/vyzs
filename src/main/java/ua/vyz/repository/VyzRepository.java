@@ -1,24 +1,24 @@
 package ua.vyz.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ua.vyz.model.Facultet;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ua.vyz.model.Vyz;
 
 import java.util.List;
 
 public interface VyzRepository extends JpaRepository<Vyz, Integer> {
-//    @Query("SELECT v FROM Vyz AS v WHERE v.passingScore > :passingScore")
-//    List<Vyz> getAllVyzByPassingScore(int passingScore);
-//    List<Vyz>getAllByPassingScore(int passingScore);
 
     List<Vyz> findAllByTown(String town);
 
-//    List<Vyz> findAllByFacultetsContains(Facultet facultet);
-//List<Vyz> findByPassingScoreLessThanEqual(int passingScore);
-
     List<Vyz> findByPassingScoreLessThanEqual(int passingScore);
-//    List<Vyz> findByPassingScoreBefore(int passingScore);
-//List<Vyz> findByPassingScoreLessThanEqual(int passingScore);
 
     List<Vyz> findByPassingScoreLessThanEqualAndTown(int passingScore, String town);
+
+    @Query("SELECT v FROM Vyz v LEFT JOIN v.facultets f WHERE f.title = :facultetTitle")
+    List<Vyz> findVyzsByFacultetTitle(@Param("facultetTitle") String facultetTitle);
+
+    @Query("SELECT v FROM Vyz v LEFT JOIN v.facultets f WHERE f.title = :facultetTitle and v.passingScore <= :passingScore and v.town = :town")
+    List<Vyz> findVyzsByFacultetTitleAndPassingScoreAndTown(@Param("facultetTitle") String facultetTitle, @Param("passingScore") int passingScore, @Param("town") String town);
+
 }
