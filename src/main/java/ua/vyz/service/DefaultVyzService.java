@@ -2,6 +2,7 @@ package ua.vyz.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ua.vyz.model.Facultet;
 import ua.vyz.model.Vyz;
 import ua.vyz.repository.VyzRepository;
 
@@ -28,4 +29,19 @@ public class DefaultVyzService implements VyzService{
     public List<Vyz> findAllByTown(String town) {
         return vyzRepository.findAllByTown(town);
     }
+
+    @Override
+    public List<Vyz> getVyzByPassingScore(int passingScore) {
+        return vyzRepository.findByPassingScoreLessThanEqual(passingScore);
+    }
+
+    @Override
+    public List<Vyz> getVyzByPassingScoreAndTown(int passingScore, String town) {
+        return vyzRepository.findByPassingScoreLessThanEqualAndTown(passingScore, town);
+    }
+
+    //    @Override
+//    public List<Vyz> findAllByFacultet(Facultet facultet) {
+//        return vyzRepository.findAllByFacultetsContains(facultet);
+//    }
 }

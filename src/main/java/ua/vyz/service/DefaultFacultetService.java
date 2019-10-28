@@ -16,4 +16,9 @@ public class DefaultFacultetService implements FacultetService{
         return facultetRepository.findAll();
     }
 
+    @Override
+    public Facultet findByTitle(String title) {
+        return facultetRepository.findByTitle(title);
+    }
+
 }
