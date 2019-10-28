@@ -13,4 +13,8 @@ public interface VyzService {
 
     List<Vyz> getVyzByPassingScoreAndTown(int passingScore, String town);
 
+    List<Vyz> getVyzsByFacultetTitle(String facultetTitle);
+
+    List<Vyz> getVyzByAllParams(String facultetTitle, int passingScore, String town);
+
 }

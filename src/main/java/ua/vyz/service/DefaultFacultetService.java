@@ -10,7 +10,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class DefaultFacultetService implements FacultetService{
-    private FacultetRepository facultetRepository;
+
+    private final FacultetRepository facultetRepository;
+
     @Override
     public List<Facultet> findAll() {
         return facultetRepository.findAll();
