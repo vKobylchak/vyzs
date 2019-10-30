@@ -14,8 +14,9 @@
 
     </head>
     <body>
-    <#include "navbar.ftl" >
-    <div class="container">
+    <#--    <#include "navbar.ftl" >-->
+    <#--    <div class="container">-->
+    <div>
         <#nested >
     </div>
     <!-- Optional JavaScript -->

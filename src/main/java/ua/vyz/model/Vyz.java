@@ -12,8 +12,18 @@ public class Vyz {
     @Id
     private int id;
     private String title;
-    private String town;
-    private int passingScore;
+    private String fullTitle;
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "address_id", referencedColumnName = "id")
+//    private Town address;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "town_id", referencedColumnName = "id")
+    private Town town;
+
+
     @ManyToMany
     @JoinTable(
             name = "facultet_vyz",
@@ -21,12 +31,18 @@ public class Vyz {
             inverseJoinColumns = @JoinColumn(name = "facultet_id"))
     List<Facultet> facultets;
 
-    public Vyz(int id, String title, String town, int passingScore, List<Facultet> facultets) {
+    private String link;
+
+    private String picture;
+
+    public Vyz(int id, String title, String fullTitle, Town town, List<Facultet> facultets, String link, String picture) {
         this.id = id;
         this.title = title;
+        this.fullTitle = fullTitle;
         this.town = town;
-        this.passingScore = passingScore;
         this.facultets = facultets;
+        this.link = link;
+        this.picture = picture;
     }
 
     public Vyz() {

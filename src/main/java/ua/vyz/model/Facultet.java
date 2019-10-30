@@ -14,14 +14,15 @@ import java.util.List;
 public class Facultet {
     @Id
     private int id;
-
+    private String number;
     private String title;
 
     @ManyToMany(mappedBy = "facultets")
     List<Vyz> vyzs;
 
-    public Facultet(int id, String title) {
+    public Facultet(int id, String number, String title) {
         this.id = id;
+        this.number = number;
         this.title = title;
     }
 
