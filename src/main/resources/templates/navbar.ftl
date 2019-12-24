@@ -32,12 +32,13 @@
                     <#list vyzs as v>
                         <#list v.facultets as f>
                         <a class="dropdown-item" href="#">${f.number} ${f.title}</a>
-<#---->
                         </#list>
                     </#list>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/test">Тести</a>
+            </li>
         </ul>
-
     </div>
 </nav>

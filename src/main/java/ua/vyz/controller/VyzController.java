@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.vyz.model.Town;
-import ua.vyz.repository.FacultetRepository;
 import ua.vyz.repository.TownRepository;
 import ua.vyz.repository.VyzRepository;
 import ua.vyz.service.DefaultVyzService;
@@ -17,12 +16,16 @@ public class VyzController {
     private final DefaultVyzService vyzService;
     private final TownRepository townRepository;
     private final VyzRepository vyzRepository;
-//    private final FacultetRepository facultetRepository;
+
+    @GetMapping("/test")
+    public String test(Model model){
+        model.addAttribute("vyzs", vyzService.findAll());
+        return "test";
+    }
 
     @GetMapping("/main")
     public String main(Model model) {
         model.addAttribute("vyzs", vyzService.findAll());
-//        model.addAttribute("facultets", facultetRepository.findAll());
         return "main";
     }
 
@@ -50,15 +53,4 @@ public class VyzController {
         model.addAttribute("vyzs", vyzRepository.findAllByTownAndFacultetTitle(town, title));
         return "main";
     }
-
-
-
-//    @GetMapping("/facultetNumber")
-//    public String getVyzsByFacultetNumber(@RequestParam String number, Model model){
-//        model.addAttribute("vyzs", vyzService.getVyzsByFacultetNumber(number));
-//        return "main";
-//    }
-
-
-
 }
